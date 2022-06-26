@@ -35,6 +35,16 @@ const handleSaveButtonClick=(e)=>{
   setPasswords([...passwords,password]);
   setBtnDisabled(true);
 }
+const handlePasswordInputClick=(e)=>{e.target.select()
+document.execCommand("copy");
+e.target.focus();
+const selectedPassword=passwords.find(p=>p===e.target.value);
+if(!selectedPassword){
+  const updatedPasswords=[...passwords,e.target.value];
+  setPasswords(updatedPasswords);
+  setBtnDisabled(true);
+}
+}
 return (
   <div className="container">
  {/* Container */}
@@ -73,6 +83,7 @@ return (
                   style={{cursor:"pointer"}}
                   value={password}
                   readOnly={true}
+                  onClick={(e)=>handlePasswordInputClick(e)}
                   />
  {/* button section */}
 
