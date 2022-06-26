@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import generatePassword  from './passwordUtils';
 function App() {
@@ -7,6 +7,14 @@ function App() {
 const[password,setPassword]=useState("");
 const[passwords,setPasswords]=useState([]);
 const [btnDisable, setBtnDisabled] = useState(false);
+
+useEffect(() => {
+  const generatedPassword = generatePassword(passwordLength);
+
+        setPassword(generatedPassword);
+
+      },[]);
+
 const handleSliderChange=(e)=>{
 
   setPasswordLength(e.target.value);
