@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import './App.css';
 
 function App() {
   
+  const[passwordLength,setPasswordLength]=useState(6);
   
 return (
   <div className="container">
@@ -19,7 +21,7 @@ return (
  {/* Slider */}
              
               <div className="mt-2">
-                <label className="form-label" htmlFor="password-length-slider">Password Length <span className="badge bg-danger">22</span>
+                <label className="form-label" htmlFor="password-length-slider">Password Length <span className="badge bg-danger">{passwordLength}</span>
                 </label>
                 <input
                   className="form-range"
@@ -28,7 +30,8 @@ return (
                   min="6"
                   max="40"
                   step="1"
-                  value="6"
+                  value={passwordLength}
+                  onChange={(e)=>setPasswordLength(e.target.value)}
                 />
                 <div className='mt-2'>
  {/* text input section */}
