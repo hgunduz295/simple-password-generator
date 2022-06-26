@@ -12,6 +12,13 @@ const handleSliderChange=(e)=>{
   const generatedPassword = generatePassword(e.target.value);
   setPassword(generatedPassword);
 }
+const setPasswordLengthColor = () =>{
+  if(passwordLength<11)return"bg-danger";
+  else if(passwordLength>=11&&passwordLength<20) return"bg-warning";
+  else{
+    return "bg-success";
+  }
+}
 return (
   <div className="container">
  {/* Container */}
@@ -28,7 +35,7 @@ return (
  {/* Slider */}
              
               <div className="mt-2">
-                <label className="form-label" htmlFor="password-length-slider">Password Length <span className="badge bg-danger">{passwordLength}</span>
+                <label className="form-label" htmlFor="password-length-slider">Password Length <span className={`badge ${setPasswordLengthColor()}` }>{passwordLength}</span>
                 </label>
                 <input
                   className="form-range"
