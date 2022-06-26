@@ -1,10 +1,17 @@
 import { useState } from 'react';
 import './App.css';
-
+import generatePassword  from './passwordUtils';
 function App() {
   
   const[passwordLength,setPasswordLength]=useState(6);
-  
+const[password,setPassword]=useState("");
+
+const handleSliderChange=(e)=>{
+
+  setPasswordLength(e.target.value);
+  const generatedPassword = generatePassword(e.target.value);
+  setPassword(generatedPassword);
+}
 return (
   <div className="container">
  {/* Container */}
@@ -31,7 +38,7 @@ return (
                   max="40"
                   step="1"
                   value={passwordLength}
-                  onChange={(e)=>setPasswordLength(e.target.value)}
+                  onChange={(e)=>handleSliderChange(e)}
                 />
                 <div className='mt-2'>
  {/* text input section */}
@@ -40,7 +47,7 @@ return (
                   className="form-control text-center" 
                   type="text"
                   style={{cursor:"pointer"}}
-                  value="A65i@zfnfvm&h"
+                  value={password}
                   />
  {/* button section */}
 
