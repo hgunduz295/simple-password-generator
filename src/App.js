@@ -3,25 +3,19 @@ import './App.css';
 
 function App() {
   const name = "Ali Veli";
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Ali Veli <code>src/App.js</code> and save to reload.
-        </p>
-        <h1>{name}</h1>  
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const isLoading = false;
+  const sayMyName =(name)=>{
+    console.log(name);
+  }
+       
+return (
+  //divsiz paranteze fragment denir div kullanmak istemezsek diye örn:<></>
+  <>
+  {isLoading ?  
+   <img src={logo} className="App-logo" alt="logo" />
+  :<h1>{name}</h1>}
+</>
+);  
+ }
 
 export default App;
