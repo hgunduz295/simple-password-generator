@@ -45,6 +45,10 @@ if(!selectedPassword){
   setBtnDisabled(true);
 }
 }
+const handleResetPasswordClick=(e)=>{
+  setPasswords([]);
+  setBtnDisabled(false);
+}
 return (
   <div className="container">
  {/* Container */}
@@ -88,7 +92,7 @@ return (
  {/* button section */}
 
 <button className='btn btn-info mt-3' disabled={btnDisable} onClick={(e)=>handleSaveButtonClick(e)}>Save</button>
-<button className='btn btn-outline-info mt-3 float-end'>Reset Saved Passwords</button>
+<button onClick={handleResetPasswordClick} className='btn btn-outline-info mt-3 float-end'>Reset Saved Passwords</button>
 
                 </div>
               </div>
