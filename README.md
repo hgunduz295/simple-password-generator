@@ -1,1 +1,1 @@
-Basit Şifre Oluşturucu React Uygulaması Projesi
+Basit Şifre Oluşturucu React Uygulaması Projesi.
