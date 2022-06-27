@@ -9,6 +9,13 @@ const[passwords,setPasswords]=useState([]);
 const [btnDisable, setBtnDisabled] = useState(false);
 
 useEffect(() => {
+
+  const savedPasswordsText=localStorage.getItem("Passwords");
+  const savedPasswords=JSON.parse(savedPasswordsText);
+  if(savedPasswords&&savedPasswords.length>0){
+    setPasswords(savedPasswords);
+  }
+
   const generatedPassword = generatePassword(passwordLength);
 
         setPassword(generatedPassword);
@@ -32,7 +39,12 @@ const setPasswordLengthColor = (pwLength) =>{
   }
 }
 const handleSaveButtonClick=(e)=>{
-  setPasswords([...passwords,password]);
+
+  const newPasswords=[...passwords,password];
+  
+  localStorage.setItem("Passwords",JSON.stringify(newPasswords));
+
+  setPasswords(newPasswords);
   setBtnDisabled(true);
 }
 const handlePasswordInputClick=(e)=>{e.target.select()
@@ -47,6 +59,8 @@ if(!selectedPassword){
 }
 const handleResetPasswordClick=(e)=>{
   setPasswords([]);
+  localStorage.setItem("Passwords",JSON.stringify([]));
+  //localstorage.removeItem("Passwords");
   setBtnDisabled(false);
 }
 return (
